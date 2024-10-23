@@ -1,1 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bugsynth Research Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body, html {
+            height: 100%;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body class="bg-white text-black h-full">
+    <header class="bg-black text-white p-4 text-center">
+        <h1 class="text-3xl font-bold">Bugsynth</h1>
+        <p class="mt-2">Automatic Synthesis of Realistic and Reliable Bug Benchmark</p>
+    </header>
 
+    <nav class="flex justify-center space-x-6 mt-4 mb-8">
+        <a href="/assets/page/demo.html" class="hover:text-gray-400">Interactive Demo</a>
+        <a href="#paper" class="hover:text-gray-400">Paper</a>
+        <a href="/assets/page/about.html" class="hover:text-gray-400">About</a>
+    </nav>
+    
+    <main id="content" class="flex flex-col items-center mt-10 p-4 flex-grow">
+        <section id="home" class="mb-12 text-center max-w-3xl">
+            <h2 class="text-2xl font-semibold mb-4">About Bugsynth</h2>
+            <p class="mb-4">Our research aims to solve complex problems by leveraging state-of-the-art technologies. This demo allows you to experience some of our main findings interactively.</p>
+            <div class="bg-gray-100 p-6 shadow-md rounded mx-auto inline-block">
+                <img src="assets/image/image.png" alt="Research Summary Image" class="w-full mb-4">
+                <p>A brief summary of our findings goes here. This can include an engaging overview of the research goals and key takeaways.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-black text-white p-4 text-center">
+        <p>&copy; 2024 Bugsynth Research Team. All rights reserved.</p>
+    </footer>
+</body>
+</html>
