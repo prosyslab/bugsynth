@@ -1,47 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bugsynth Research Demo</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body, html {
+        body,
+        html {
             height: 100%;
             font-family: 'Helvetica Neue', Arial, sans-serif;
         }
+
         body {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
     </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Function to fetch and load content from external files
+            async function loadPage(route) {
+                try {
+                    const response = await fetch(`page/${route}.html`);
+                    if (response.ok) {
+                        const html = await response.text();
+                        document.getElementById('content').innerHTML = html;
+                        if (route == 'demo') {
+                            showCodeExample(1);
+                        }
+                    } else if (route == "paper") {
+                        let link = document.createElement('a');
+                        link.href = 'assets/pdf/bugsynth.pdf';
+                        link.download = 'paper.pdf';
+                        link.click();
+                    } else {
+                        document.getElementById('content').innerHTML = '<p>Error loading page.</p>';
+                    }
+                } catch (error) {
+                    document.getElementById('content').innerHTML = '<p>Error loading page.</p>';
+                }
+            }
+
+            // Handle navigation clicks
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const route = this.getAttribute('data-route');
+                    loadPage(route);
+                });
+            });
+
+            // Default route
+            loadPage('demo');
+        });
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <!-- and it's easy to individually load additional languages -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+
+    <script>hljs.highlightAll();</script>
+    <script src="page/demo.js"></script>
 </head>
+
 <body class="bg-white text-black h-full">
     <header class="bg-black text-white p-4 text-center">
-        <h1 class="text-3xl font-bold">Bugsynth</h1>
-        <p class="mt-2">Automatic Synthesis of Realistic and Reliable Bug Benchmark</p>
+        <h1 class="text-5xl font-bold mb-5">Bugsynth</h1>
+        <h3 class="mt-2 text-2xl">Automatic Synthesis of Realistic and Reliable Bug Benchmark</h3>
     </header>
 
-    <nav class="flex justify-center space-x-6 mt-4 mb-8">
-        <a href="/assets/page/demo.html" class="hover:text-gray-400">Interactive Demo</a>
-        <a href="#paper" class="hover:text-gray-400">Paper</a>
-        <a href="/assets/page/about.html" class="hover:text-gray-400">About</a>
+    <nav class="flex justify-center space-x-6 mt-4 mb-4 text-xl font-bold">
+        <a href="#" data-route="demo" class="hover:text-gray-400">Interactive Demo</a>
+        <a href="#" data-route="paper" class="hover:text-gray-400">Paper</a>
+        <a href="#" data-route="about" class="hover:text-gray-400">About</a>
     </nav>
-    
-    <main id="content" class="flex flex-col items-center mt-10 p-4 flex-grow">
-        <section id="home" class="mb-12 text-center max-w-3xl">
-            <h2 class="text-2xl font-semibold mb-4">About Bugsynth</h2>
-            <p class="mb-4">Our research aims to solve complex problems by leveraging state-of-the-art technologies. This demo allows you to experience some of our main findings interactively.</p>
-            <div class="bg-gray-100 p-6 shadow-md rounded mx-auto inline-block">
-                <img src="assets/image/image.png" alt="Research Summary Image" class="w-full mb-4">
-                <p>A brief summary of our findings goes here. This can include an engaging overview of the research goals and key takeaways.</p>
-            </div>
-        </section>
+
+    <main id="content" class="flex flex-col items-center mt-10 p-4 flex-grow w-full">
+        <!-- Content will be dynamically injected here -->
     </main>
 
     <footer class="bg-black text-white p-4 text-center">
-        <p>&copy; 2024 Bugsynth Research Team. All rights reserved.</p>
+        <p>Bugsynth maintained by <a class="font-bold underline" href=https://prosys.kaist.ac.kr>Programming system Lab
+                @
+                KAIST</a></p>
     </footer>
 </body>
+
 </html>
