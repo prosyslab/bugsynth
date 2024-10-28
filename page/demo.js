@@ -1,123 +1,52 @@
 
         // Code examples data
 const examples = {
-    1: `#include <stdio.h>
+            1: `int division_by_zero_while(int x, int y, int z)
+{
+    int temp1 = 0;
+    int result = 0;
 
-int main() {
-    printf("Hello, World!\\n");
-    return 0;
-}`,
-            2: `#include <stdio.h>
+    temp1 = x / (x - 5) * y;    // [BUG] Potential division-by-zero@4:15 '/ (x - 5)' with input: x = 5, y = 10, z = 1
 
-int add(int a, int b) {
-    return a + b;
-}
-
-int main() {
-    int sum = add(5, 3);
-    printf("Sum: %d\\n", sum);
-    return 0;
-}`,
-            3: `#include <stdio.h>
-
-void greet() {
-    printf("Welcome to Bugsynth!\\n");
-}
-
-int main() {
-    greet();
-    return 0;
-}`,
-            4: `#include <stdio.h>
-
-int multiply(int a, int b) {
-    return a * b;
-}
-
-int main() {
-    int product = multiply(4, 5);
-    printf("Product: %d\\n", product);
-    return 0;
-}`,
-            5: `#include <stdio.h>
-
-void displayMessage() {
-    printf("This is a simple message.\\n");
-}
-
-int main() {
-    displayMessage();
-    return 0;
-}`,
-            6: `#include <stdio.h>
-
-int subtract(int a, int b) {
-    return a - b;
-}
-
-int main() {
-    int difference = subtract(10, 4);
-    printf("Difference: %d\\n", difference);
-    return 0;
-}`,
-            7: `#include <stdio.h>
-
-int divide(int a, int b) {
-    if (b != 0) {
-        return a / b;
+    if (x == 5) {
+        result = 0;
     } else {
-        printf("Division by zero error!\\n");
-        return 0;
+        result = temp1 / (result + 1);    // Safe division
     }
-}
-
-int main() {
-    int quotient = divide(20, 4);
-    printf("Quotient: %d\\n", quotient);
-    return 0;
+    return result;
 }`,
-            8: `#include <stdio.h>
+            2: `int div_by_zero_while(int x, int y, int z)
+{
+    int result = 0;
+    int sum = 0;
+    int ten = 10;
+    int digit = 0;
+    int temp = x;
 
-int factorial(int n) {
-    if (n == 0) {
-        return 1;
-    } else {
-        return n * factorial(n - 1);
+    while (temp != 0) {
+        digit = temp - (temp / digit) * ten;    // [BUG] Potential division-by-zero@8:30 '/ digit' with input: x = -7, y = -6, z = 2
+        sum = sum + digit;
+        temp = temp;
     }
-}
-
-int main() {
-    int fact = factorial(5);
-    printf("Factorial: %d\\n", fact);
-    return 0;
+    
+    return result;
 }`,
-            9: `#include <stdio.h>
+            3: `int division_by_zero_while(int x, int y, int z)
+{
+    int y_norm = y;
 
-void swap(int *a, int *b) {
-    int temp = *a;
-    *a = *b;
-    *b = temp;
-}
-
-int main() {
-    int x = 5, y = 10;
-    printf("Before swap: x = %d, y = %d\\n", x, y);
-    swap(&x, &y);
-    printf("After swap: x = %d, y = %d\\n", x, y);
-    return 0;
-}`,
-            10: `#include <stdio.h>
-
-void printArray(int arr[], int size) {
-    for (int i = 0; i < size; i++) {
-        printf("%d ", arr[i]);
+    while (y_norm != 0) {
+        x = x / y_norm;
+        y_norm = y_norm - 1 / (y_norm + 3) * z;    // [BUG] Potential division-by-zero@5:29 '/ (y_norm + 3)' with input: x = 6, y = -3, z = 4
     }
-    printf("\\n");
-}
 
-int main() {
-    int arr[] = {1, 2, 3, 4, 5};
-    printArray(arr, 5);
+    x = x / (y_norm + 3) * z;    // Safe division
+
+    if (x > 0) {
+        int temp = x;
+        x = x / z;    // Safe division
+        z = temp;
+    }
     return 0;
 }`
         };
