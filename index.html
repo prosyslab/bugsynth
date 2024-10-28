@@ -27,7 +27,7 @@
                     const response = await fetch(`page/${route}.html`);
                     if (response.ok) {
                         const html = await response.text();
-                        document.getElementById('content').innerHTML = html;
+                        document.getElementById('content').innerHTML += html;
                         if (route == 'demo') {
                             showCodeExample(1);
                         }
@@ -44,17 +44,9 @@
                 }
             }
 
-            // Handle navigation clicks
-            document.querySelectorAll('nav a').forEach(link => {
-                link.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const route = this.getAttribute('data-route');
-                    loadPage(route);
-                });
-            });
-
             // Default route
             loadPage('demo');
+            loadPage('about');
         });
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
@@ -74,9 +66,9 @@
     </header>
 
     <nav class="flex justify-center space-x-6 mt-4 mb-4 text-xl font-bold">
-        <a href="#" data-route="demo" class="hover:text-gray-400">Interactive Demo</a>
-        <a href="#" data-route="paper" class="hover:text-gray-400">Paper</a>
-        <a href="#" data-route="about" class="hover:text-gray-400">About</a>
+        <a href="#demo" data-route="demo" class="hover:text-gray-400">Demo</a>
+        <a href="#paper" data-route="paper" class="hover:text-gray-400">Paper</a>
+        <a href="#about" data-route="about" class="hover:text-gray-400">About</a>
     </nav>
 
     <main id="content" class="flex flex-col items-center mt-10 p-4 flex-grow w-full">

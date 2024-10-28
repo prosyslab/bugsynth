@@ -55,7 +55,7 @@ const examples = {
 function showCodeExample(exampleNumber) {
     const code = examples[exampleNumber] || '// Example not found.';
     const escaped = code.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-    document.getElementById('code-example').innerHTML = `<pre><code class="language-c">${escaped}</code></pre>`;
+    document.getElementById('code-example').innerHTML = `<pre><code class="language-c overflow-x-auto">${escaped}</code></pre>`;
     document.querySelectorAll('pre code').forEach((el) => {
         hljs.highlightElement(el);
     });
