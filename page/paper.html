@@ -1,12 +1,22 @@
-<div class="flex flex-col items-center p-4">
-    <section class="text-center max-w-3xl"> 
+<div class="flex flex-col items-center mt-20 p-4">
+    <section class="text-center max-w-3xl">
+        <h2 class="text-3xl font-semibold mb-8" id="paper">Paper</h2>
         <div class="flex flex-col space-y-16">
-             <!-- Abstract Section -->
-            <section class="w-full"></section>
-            <h2 class="text-3xl font-semibold mb-8" id="paper">Paper</h2>
-            <a href="assets/pdf/bugsynth.pdf">[Full pdf]</a>
-            <p align="left">This paper presents BugSynth, a tool that automatically generates buggy programs by combining language models and program verification techniques. While error benchmarks are becoming increasingly important for evaluating error detectors and addressing the issue of insufficient training data for language models, existing methods for constructing these benchmarks have some limitations. BugSynth automatically generates programs with clearly defined locations of division-by-zero bugs without requiring the original program. Experimental results show that BugSynth achieved a 51% success rate in generation, and it was confirmed that the benchmarks constructed are of similar difficulty to those created by humans when evaluating static analyzers.</p>
-            </section>            
+            <!-- Abstract Section -->
+            <section class="w-full">
+                <h2 class="text-2xl font-semibold mb-4">Abstract</h2>
+                <p align="left" style="text-indent:15px; text-align:justify;">
+                    This paper presents BugSynth, a tool that automatically generates buggy programs by combining language models and program verification techniques. While error benchmarks are becoming increasingly important for evaluating error detectors and addressing the issue of insufficient training data for language models, existing methods for constructing these benchmarks have some limitations. BugSynth automatically generates programs with clearly defined locations of division-by-zero bugs without requiring the original program. Experimental results show that BugSynth achieved a 51% success rate in generation, and it was confirmed that the benchmarks constructed are of similar difficulty to those created by humans when evaluating static analyzers.
+                </p>
+            </section>
+
+            <!-- Full pdf Section -->
+            <section class="w-full">
+                <h2 class="text-2xl font-semibold mb-4">Full PDF</h2>
+                <div class="flex justify-center">
+                    <a href="assets/pdf/bugsynth.pdf"><img src="assets/image/pdf.png" alt="pdf" class="w-8 h-8"></a>
+                </div>
+            </section>
         </div>
     </section>
 </div>
