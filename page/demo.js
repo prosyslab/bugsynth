@@ -6,7 +6,12 @@ const examples = {
     int temp1 = 0;
     int result = 0;
 
-    temp1 = x / (x - 5) * y;    // [BUG] Potential division-by-zero@4:15 '/ (x - 5)' with input: x = 5, y = 10, z = 1
+    temp1 = x / (x - 5) * y;
+    /*
+        Potential division-by-zero '/ (x - 5)'
+        with input: x = 5, y = 10, z = 1
+    */
+    
 
     if (x == 5) {
         result = 0;
@@ -24,7 +29,12 @@ const examples = {
     int temp = x;
 
     while (temp != 0) {
-        digit = temp - (temp / digit) * ten;    // [BUG] Potential division-by-zero@8:30 '/ digit' with input: x = -7, y = -6, z = 2
+        digit = temp - (temp / digit) * ten;
+        /*
+            Potential division-by-zero '/ digit'
+            with input: x = -7, y = -6, z = 2
+        */
+
         sum = sum + digit;
         temp = temp;
     }
@@ -37,7 +47,11 @@ const examples = {
 
     while (y_norm != 0) {
         x = x / y_norm;
-        y_norm = y_norm - 1 / (y_norm + 3) * z;    // [BUG] Potential division-by-zero@5:29 '/ (y_norm + 3)' with input: x = 6, y = -3, z = 4
+        y_norm = y_norm - 1 / (y_norm + 3) * z;
+        /*
+            Potential division-by-zero '/ (y_norm + 3)'
+            with input: x = 6, y = -3, z = 4
+        */
     }
 
     x = x / (y_norm + 3) * z;    // Safe division
