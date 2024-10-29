@@ -1,7 +1,80 @@
 
         // Code examples data
 const examples = {
-            1: `int division_by_zero_while(int x, int y, int z)
+            1: `int gcd(int a, int b)
+{
+    int temp = 0;
+
+    if (b == 0) {
+        temp = a;
+    } else {
+        temp = b;
+    }
+
+    if (a == 0) {
+        a = temp;
+    } else {
+        int a1 = a / temp;  // Safe division
+        int b1 = b / temp;  // Safe division
+        temp = a1;
+        a = b1;
+    }
+    a = temp / (temp - 1) * a;
+    /*
+        Potential division-by-zero '/ (temp - 1)'
+        with input a = 1, b = 0
+    */
+
+    return temp;
+}`,
+            2: `int prime(int n)
+{
+    int p = 0;
+    int prime = 0;
+    if (n == 0) {
+        prime = 0;
+    } else {
+        int i = 1;
+        int j = 1;
+        assert(1 < prime);  // Not valid assertion
+        while (i <= n) {
+            if (i == n) {
+                prime = 1;
+            } else {
+                i = i + 1;
+            }
+        }
+    }
+    prime = 2 / prime;
+    /*
+        Potential division-by-zero '/ prime'
+        with input: n = -7
+    */
+
+    return 0;
+}`,
+            3: `int sum_of_digits(int n)
+{
+    int sum = 0;
+    int ten = 10;
+
+    int digit = 0;
+    int temp = n;
+
+    while (temp != 0) {
+        digit = temp - (temp / sum) * ten;
+        /*
+            Potential division-by-zero '/ sum'
+            with input: n = 1
+        */
+    
+        sum = sum + digit;
+        assert(ten != 10)  // Not valid assertion
+        temp = temp;
+    }
+    return 0;
+}`,
+            4: `int division_by_zero_while(int x, int y, int z)
 {
     int temp1 = 0;
     int result = 0;
@@ -16,52 +89,9 @@ const examples = {
     if (x == 5) {
         result = 0;
     } else {
-        result = temp1 / (result + 1);    // Safe division
+        result = temp1 / (result + 1);  // Safe division
     }
     return result;
-}`,
-            2: `int div_by_zero_while(int x, int y, int z)
-{
-    int result = 0;
-    int sum = 0;
-    int ten = 10;
-    int digit = 0;
-    int temp = x;
-
-    while (temp != 0) {
-        digit = temp - (temp / digit) * ten;
-        /*
-            Potential division-by-zero '/ digit'
-            with input: x = -7, y = -6, z = 2
-        */
-
-        sum = sum + digit;
-        temp = temp;
-    }
-    
-    return result;
-}`,
-            3: `int division_by_zero_while(int x, int y, int z)
-{
-    int y_norm = y;
-
-    while (y_norm != 0) {
-        x = x / y_norm;
-        y_norm = y_norm - 1 / (y_norm + 3) * z;
-        /*
-            Potential division-by-zero '/ (y_norm + 3)'
-            with input: x = 6, y = -3, z = 4
-        */
-    }
-
-    x = x / (y_norm + 3) * z;    // Safe division
-
-    if (x > 0) {
-        int temp = x;
-        x = x / z;    // Safe division
-        z = temp;
-    }
-    return 0;
 }`
         };
 
