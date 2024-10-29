@@ -1,27 +1,26 @@
 <div class="flex flex-col items-center p-4">
-    <!-- Key Points Section -->
     <section class="mb-12 w-full"></section>
     <h2 class="text-4xl font-semibold mb-8 text-center" id="about">About</h2>
-    <div class="grid grid-cols-3 gap-4 text-center max-w-4xl mx-auto">
+    <div class="grid sm:grid-cols-1 md:grid-cols-3 gap-4 text-center max-w-3xl mx-auto">
         <!-- image: Flaticon.com -->
         <div>
             <img src="assets/image/automatic.png" alt="automatic icon" class="w-32 h-32 mx-auto mb-2">
             <p class="font-bold text-xl">Automatic</p>
-            <p style="text-indent:15px;">
+            <p class="text-left mt-2">
                 Automatic synthesis of program is crucial that it allows us to create of a large-sized benchmark easily, contrasted to manual data creation. We adopted large language model (LLM) to synthesize a program automatically.
             </p>
         </div>
         <div>
             <img src="assets/image/reliable.png" alt="reliable icon" class="w-32 h-32 mx-auto mb-2">
             <p class="font-bold text-xl">Reliable</p>
-            <p style="text-indent:15px;">
+            <p class="text-left mt-2">
                 We need a reliable bug benchmark in order to precisely evaluate bug detectors, such as static analyzers. We adopted program verification technique during the constrained decoding process of LLM to ensure the uniqueness of the bug.
             </p>
         </div>
         <div>
             <img src="assets/image/realistic.png" alt="realistic icon" class="w-32 h-32 mx-auto mb-2">
             <p class="font-bold text-xl">Realistic</p>
-            <p style="text-indent:15px;">
+            <p class="text-left mt-2">
                 Bug benchmark should be realistic; similar enough to manually crafted benchmarks to properly evaluate bug detectors with realistic buggy logic. We checked BugSynth benchmark is similar to the manually crafted benchmark by experiment.
             </p>
         </div>
