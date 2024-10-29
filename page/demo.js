@@ -69,7 +69,10 @@ const examples = {
 function showCodeExample(exampleNumber) {
     const code = examples[exampleNumber] || '// Example not found.';
     const escaped = code.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-    document.getElementById('code-example').innerHTML = `<pre><code class="language-c overflow-x-auto whitespace-pre-wrap">${escaped}</code></pre>`;
+    document.getElementById('code-example').innerHTML = `
+        <pre class="p-1 m-0 leading-normal block">
+            <code class="language-c text-xs sm:text-base md:text-lg">${escaped}</code>
+        </pre>`;
     document.querySelectorAll('pre code').forEach((el) => {
         hljs.highlightElement(el);
     });
