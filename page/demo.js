@@ -1,7 +1,7 @@
 
         // Code examples data
 const examples = {
-            1: `int gcd(int a, int b)
+            1: `int func(int a, int b)
 {
     int temp = 0;
 
@@ -27,7 +27,7 @@ const examples = {
 
     return temp;
 }`,
-            2: `int prime(int n)
+            2: `int f(int n)
 {
     int p = 0;
     int prime = 0;
@@ -53,7 +53,7 @@ const examples = {
 
     return 0;
 }`,
-            3: `int sum_of_digits(int n)
+            3: `int g(int n)
 {
     int sum = 0;
     int ten = 10;
@@ -74,7 +74,7 @@ const examples = {
     }
     return 0;
 }`,
-            4: `int division_by_zero_while(int x, int y, int z)
+            4: `int div0_sample(int x, int y, int z)
 {
     int temp1 = 0;
     int result = 0;
